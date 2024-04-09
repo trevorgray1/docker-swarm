@@ -14,9 +14,29 @@ pipeline {
                 currentBuild.result == null || currentBuild.result == 'SUCCESS' 
               }
             }
+           steps {
+                sh 'make publish'
+            }
+        }
+    }
+        stage('Deploy') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS' 
+              }
+            }
             steps {
                 sh 'make publish'
             }
         }
     }
-}
+// Script //
+node {
+    /* .. snip .. */
+    stage('Deploy') {
+        if (currentBuild.result == null || currentBuild.result == 'SUCCESS') { 
+            sh 'make publish'
+        }
+    }
+    /* .. snip .. */
+} 
