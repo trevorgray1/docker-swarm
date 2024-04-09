@@ -19,6 +19,7 @@ pipeline {
             }
         }
     }
+}
 // Script //
 node {
     /* .. snip .. */
