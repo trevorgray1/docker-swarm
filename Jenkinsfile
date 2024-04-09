@@ -8,7 +8,6 @@ pipeline {
                 sh 'node --version'
             }
         }
-    }
         stage('Deploy') {
             when {
               expression {
